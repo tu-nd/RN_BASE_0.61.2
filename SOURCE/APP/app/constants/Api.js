@@ -63,5 +63,3 @@ export const requestHomeData = (deviceID = "") => {
     getAxios.get(`api/Service/GetHomeScreen?deviceID=${deviceID}`)
   );
 };
-
-

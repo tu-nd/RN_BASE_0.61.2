@@ -1,4 +1,3 @@
-
 const fonts = {
   roboto_black: "Roboto-Black",
   roboto_blackitalic: "Roboto-BlackItalic",
@@ -13,6 +12,6 @@ const fonts = {
   roboto_thin: "Roboto-Thin",
   roboto_thinitalic: "Roboto-ThinItalic",
   spacemono_regular: "SpaceMono-Regular"
-}
+};
 
-export default fonts
+export default fonts;
