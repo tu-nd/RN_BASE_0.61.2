@@ -10,8 +10,8 @@ import {
 import { Header } from "react-native-elements";
 import NavigationUtil from "../navigation/NavigationUtil";
 import Icon from "./Icon";
-import * as theme from "../constants/Theme";
 import R from "@app/assets/R";
+import { colors } from "@app/constants/Theme";
 interface Props {
   color?: string;
   back?: boolean;
@@ -53,8 +53,8 @@ export default class RNHeader extends Component<Props> {
       <Header
         placement="center"
         containerStyle={{
-          backgroundColor: theme.colors.headerColor,
-          borderBottomColor: theme.colors.active
+          backgroundColor: colors.headerColor,
+          borderBottomColor: colors.active
         }}
         leftComponent={
           <View>
@@ -66,7 +66,7 @@ export default class RNHeader extends Component<Props> {
                 <Icon.Ionicons
                   name="ios-arrow-round-back"
                   size={35}
-                  color={theme.colors.white}
+                  color={colors.active}
                 />
               </TouchableOpacity>
             ) : leftButton ? (
@@ -99,18 +99,15 @@ export default class RNHeader extends Component<Props> {
               )}
             </View>
           ) : (
-              <View></View>
-            )
+            <View />
+          )
         }
-        statusBarProps={
-          {
-            barStyle: 'light-content',
-            translucent: true,
-            backgroundColor: 'transparent'
-          }
-        }
-      >
-      </Header>
+        statusBarProps={{
+          barStyle: "light-content",
+          translucent: true,
+          backgroundColor: "transparent"
+        }}
+      />
     );
   }
 }

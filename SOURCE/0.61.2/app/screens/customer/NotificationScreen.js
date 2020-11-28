@@ -3,15 +3,12 @@ import { View, Text, SafeAreaView } from "react-native";
 import { connect } from "react-redux";
 import WHeader from "@app/components/WHeader";
 import R from "@app/assets/R";
-import theme from "@app/constants/Theme";
+import theme, { colors } from "@app/constants/Theme";
 export class NotificationScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <WHeader
-          titleHeader={R.strings.user}
-          color={theme.colors.headerTitle}
-        />
+        <WHeader titleHeader={R.strings.user} color={colors.headerTitle} />
         <SafeAreaView
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >

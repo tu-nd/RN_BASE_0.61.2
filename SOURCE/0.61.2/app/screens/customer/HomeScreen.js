@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import { View, Text, SafeAreaView } from "react-native";
 import WHeader from "@app/components/WHeader";
 import R from "@app/assets/R";
-import theme from "@app/constants/Theme";
+import { colors, OS } from "@app/constants/Theme";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import CVModal from "@app/components/CVModal";
+
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showModal: false
+    };
   }
-
   render() {
     return (
       <View
@@ -16,14 +20,18 @@ export default class HomeScreen extends Component {
           flex: 1
         }}
       >
-        <WHeader
-          titleHeader={R.strings.user}
-          color={theme.colors.headerTitle}
-        />
+        <WHeader titleHeader={R.strings.user} color={colors.headerTitle} />
         <SafeAreaView
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <Text>RNCA Home </Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({
+                showModal: true
+              });
+            }}
+            children={<Text>RNCA Home </Text>}
+          />
         </SafeAreaView>
       </View>
     );

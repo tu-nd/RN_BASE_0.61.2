@@ -1,47 +1,40 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity, Alert, Image } from "react-native";
-import i18 from "@i18";
-import theme from "@theme";
+import theme, { colors, fonts } from "@theme";
 import R from "@R";
-import NavigationUtil from "@app/navigation/NavigationUtil";
-import { SCREEN_ROUTER } from "@app/constants/Constant";
+
 import DropdownAlertUtil from "@app/components/DropdownAlertUtil";
 import OneSignal from "react-native-onesignal";
-import reactotron from "reactotron-react-native";
-import AwsomeFont from "../../components/Icon";
 import WHeader from "@app/components/WHeader";
+import FstImage from "@app/components/FstImage";
+import NavigationUtil from "@app/navigation/NavigationUtil";
+import { SCREEN_ROUTER } from "@app/constants/Constant";
 export default class UserScreen extends Component {
   async componentDidMount() {}
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <WHeader
-          titleHeader={R.strings.user}
-          color={theme.colors.headerTitle}
-        />
+        <WHeader titleHeader={R.strings.user} color={colors.headerTitle} />
         <TouchableOpacity
           onPress={() => {
-            OneSignal.getPermissionSubscriptionState(status => {
-              userID = status.userId;
-              DropdownAlertUtil.showAlert(
-                "Thông báo",
-                "DeviceID của OneSignal là : " + userID,
-                () => {
-                  alert("tap action");
-                }
-              );
-            });
+            // NavigationUtil.navigate(SCREEN_ROUTER.)
+            // OneSignal.getPermissionSubscriptionState(status => {
+            //   userID = status.userId;
+            //   DropdownAlertUtil.showAlert(
+            //     "Thông báo",
+            //     "DeviceID của OneSignal là : " + userID,
+            //     () => {
+            //       alert("tap action");
+            //     }
+            //   );
+            // });
           }}
         >
-          <Text style={[theme.fonts.bold17]}>{R.strings.update_user_info}</Text>
-          <AwsomeFont.AntDesign name="home" />
-          <Image
-            style={{
-              width: 100,
-              height: 100
-            }}
+          <Text style={[fonts.bold17]}>{R.strings.update_user_info}</Text>
+          <FstImage
             source={R.images.ic_home}
+            style={{ width: 40, height: 40 }}
           />
         </TouchableOpacity>
       </View>

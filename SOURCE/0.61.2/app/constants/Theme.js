@@ -1,6 +1,6 @@
 import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native";
 const dimension = ({ width, height } = Dimensions.get("window"));
-
+export const OS = Platform.OS;
 const colors = {
   primary: "#f3f3f3",
   primaryDark: "#125183",
@@ -12,7 +12,8 @@ const colors = {
   defaultBg: "#f3f4f6",
   inactive: "gray",
   indicator: "#24277e",
-  borderTopColor: "#dedede"
+  borderTopColor: "#dedede",
+  white: "#ffffff"
 };
 
 const sizes = {
@@ -56,7 +57,6 @@ const fonts = {
 const styles = StyleSheet.create({
   androidSafeView: {
     flex: 1
-    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 
   test: {
@@ -81,9 +81,19 @@ const styles = StyleSheet.create({
     height: height * 0.3,
     backgroundColor: colors.white,
     borderRadius: 15
+  },
+  shadow: {
+    backgroundColor: colors.white,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3
   }
 });
 
+// export { colors, sizes, fonts, styles, dimension };
 export { colors, sizes, fonts, styles, dimension };
-const theme = { colors, sizes, fonts, styles, dimension };
-export default theme;

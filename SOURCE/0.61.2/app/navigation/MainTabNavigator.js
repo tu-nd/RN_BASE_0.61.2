@@ -7,10 +7,10 @@ import NotificationScreen from "@app/screens/customer/NotificationScreen";
 import UserScreen from "../screens/customer/UserScreen";
 import { SCREEN_ROUTER } from "@constant";
 import R from "@R";
-import * as theme from "@theme";
 
 import { Image } from "react-native";
 import { Platform } from "react-native";
+import { colors } from "@app/constants/Theme";
 
 const tabbarIcons = {
   [SCREEN_ROUTER.HOME]: R.images.ic_home,
@@ -51,7 +51,7 @@ const Main = createBottomTabNavigator(
               height: focused ? 25 : 22,
               position: "absolute",
               bottom: 8,
-              tintColor: focused ? theme.colors.active : "gray"
+              tintColor: focused ? colors.active : "gray"
             }}
             resizeMode={"contain"}
           />
@@ -72,10 +72,10 @@ const Main = createBottomTabNavigator(
         getTabBarIcon(navigation, focused, tintColor)
     }),
     tabBarOptions: {
-      activeBackgroundColor: theme.colors.bottombarBg,
-      inactiveBackgroundColor: theme.colors.bottombarBg,
-      inactiveTintColor: theme.colors.inactive,
-      activeTintColor: theme.colors.active
+      activeBackgroundColor: colors.bottombarBg,
+      inactiveBackgroundColor: colors.bottombarBg,
+      inactiveTintColor: colors.inactive,
+      activeTintColor: colors.active
     },
     tabBarComponent: props => {
       return (
@@ -83,8 +83,8 @@ const Main = createBottomTabNavigator(
           {...props}
           onTabPress={props.onTabPress}
           style={{
-            borderTopColor: theme.colors.borderTopColor,
-            backgroundColor: theme.colors.primary,
+            borderTopColor: colors.borderTopColor,
+            backgroundColor: colors.primary,
             height: 58
           }}
         />
