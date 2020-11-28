@@ -5,6 +5,8 @@ import R from "@app/assets/R";
 import { colors, OS } from "@app/constants/Theme";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import CVModal from "@app/components/CVModal";
+import { SCREEN_ROUTER } from "@app/constants/Constant";
+import NavigationUtil from "@app/navigation/NavigationUtil";
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -20,17 +22,15 @@ export default class HomeScreen extends Component {
           flex: 1
         }}
       >
-        <WHeader titleHeader={R.strings.user} color={colors.headerTitle} />
+        <WHeader titleHeader={R.strings.home} color={colors.headerTitle} />
         <SafeAreaView
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
           <TouchableOpacity
             onPress={() => {
-              this.setState({
-                showModal: true
-              });
+              NavigationUtil.navigate(SCREEN_ROUTER.LOGIN);
             }}
-            children={<Text>RNCA Home </Text>}
+            children={<Text>Login</Text>}
           />
         </SafeAreaView>
       </View>

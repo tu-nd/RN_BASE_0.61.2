@@ -103,9 +103,9 @@ export default class RNHeader extends Component<Props> {
           )
         }
         statusBarProps={{
-          barStyle: "light-content",
-          translucent: true,
-          backgroundColor: "transparent"
+          // barStyle: "light-content",
+          // translucent: true,
+          backgroundColor: colors.active
         }}
       />
     );

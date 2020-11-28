@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from "react";
+import { View, Text } from "react-native";
+import { connect } from "react-redux";
 
-class LoginScreen extends Component {
-    render() {
-        return (
-            <View>
-                <Text> LoginScreen </Text>
-            </View>
-        );
-    }
+export class RegisterScreen extends Component {
+  render() {
+    return (
+      <View>
+        <Text> RegisterScreen </Text>
+      </View>
+    );
+  }
 }
 
-export default LoginScreen;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterScreen);

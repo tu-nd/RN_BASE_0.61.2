@@ -2,15 +2,19 @@ import React from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
-import HomeScreen from "@app/screens/customer/HomeScreen";
-import NotificationScreen from "@app/screens/customer/NotificationScreen";
-import UserScreen from "../screens/customer/UserScreen";
+import HomeScreen from "@app/screens/customer/home/HomeScreen";
+import NotificationScreen from "@app/screens/customer/notification/NotificationScreen";
+import UserScreen from "../screens/customer/user/UserScreen";
 import { SCREEN_ROUTER } from "@constant";
 import R from "@R";
 
 import { Image } from "react-native";
 import { Platform } from "react-native";
 import { colors } from "@app/constants/Theme";
+import FastImage from "react-native-fast-image";
+import LoginScreen from "@app/screens/auth/LoginScreen";
+import { RegisterScreen } from "@app/screens/auth/RegisterScreen";
+import { ForgotPasswordScreen } from "@app/screens/auth/ForgotPasswordScreen";
 
 const tabbarIcons = {
   [SCREEN_ROUTER.HOME]: R.images.ic_home,
@@ -44,15 +48,15 @@ const Main = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: R.strings.notification,
         tabBarIcon: ({ focused, tintColor }) => (
-          <Image
+          <FastImage
             source={R.images.ic_noti}
             style={{
               width: focused ? 25 : 22,
               height: focused ? 25 : 22,
               position: "absolute",
-              bottom: 8,
-              tintColor: focused ? colors.active : "gray"
+              bottom: 8
             }}
+            tintColor={focused ? colors.active : "gray"}
             resizeMode={"contain"}
           />
         )
@@ -89,8 +93,25 @@ const Main = createBottomTabNavigator(
           }}
         />
       );
-    },
-    initialRouteName: "User"
+    }
   }
 );
-export default Main;
+const AuthStack = createStackNavigator(
+  {
+    [SCREEN_ROUTER.LOGIN]: LoginScreen,
+    [SCREEN_ROUTER.REGISTER]: RegisterScreen,
+    [SCREEN_ROUTER.FORGOT_PASS]: ForgotPasswordScreen
+  },
+  { headerMode: "none", mode: "modal" }
+);
+export default createStackNavigator(
+  {
+    [SCREEN_ROUTER.MAIN]: Main,
+    AuthStack
+  },
+  {
+    defaultNavigationOptions: {
+      header: null
+    }
+  }
+);

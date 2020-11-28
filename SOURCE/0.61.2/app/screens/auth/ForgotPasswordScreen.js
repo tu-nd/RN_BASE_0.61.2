@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from "react";
+import { View, Text } from "react-native";
 
-export default class ForgotPassword extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
+import { connect } from "react-redux";
 
-    render() {
-        return (
-            <View>
-                <Text> ForgotPassword </Text>
-            </View>
-        );
-    }
+export class ForgotPasswordScreen extends Component {
+  render() {
+    return (
+      <View>
+        <Text> ForgotPasswordScreen </Text>
+      </View>
+    );
+  }
 }
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ForgotPasswordScreen);

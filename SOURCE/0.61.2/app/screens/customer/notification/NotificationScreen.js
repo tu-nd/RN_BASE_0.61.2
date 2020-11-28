@@ -8,7 +8,10 @@ export class NotificationScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <WHeader titleHeader={R.strings.user} color={colors.headerTitle} />
+        <WHeader
+          titleHeader={R.strings.notification}
+          color={colors.headerTitle}
+        />
         <SafeAreaView
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
