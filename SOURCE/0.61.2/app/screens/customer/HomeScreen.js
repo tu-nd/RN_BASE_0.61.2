@@ -30,7 +30,7 @@ export default class HomeScreen extends Component {
                 showModal: true
               });
             }}
-            children={<Text>RNCA Home1 </Text>}
+            children={<Text>RNCA Home </Text>}
           />
         </SafeAreaView>
       </View>
