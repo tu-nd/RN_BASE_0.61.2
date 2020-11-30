@@ -17,6 +17,13 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import NavigationUtil from "./app/navigation/NavigationUtil";
 import store from "./app/redux/store";
 
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({ 
+  dsn: 'https://c7abe834b0cf45b0b6a61a4e2129c935@o393004.ingest.sentry.io/5537410', 
+});
+
+
 class App extends Component {
   constructor(properties) {
     super(properties);
