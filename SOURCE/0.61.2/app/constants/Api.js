@@ -12,7 +12,7 @@ function createAxios() {
 
   axiosInstant.interceptors.request.use(
     async config => {
-      config.headers.token = await AsyncStorage.getItem("token");
+      config.headers.token = await AsyncStorage.getItem("token") || null || "";
       return config;
     },
     error => Promise.reject(error)
@@ -20,12 +20,12 @@ function createAxios() {
 
   axiosInstant.interceptors.response.use(response => {
     if (response.data && response.data.code == 403) {
-      setTimeout(() => {
-        Alert.alert("Thông báo", I18n.t("relogin"));
-      }, 100);
-
       AsyncStorage.setItem("token", "", () => {
         NavigationUtil.navigate("Auth");
+        showMessages(
+          "Thông báo",
+          "Tài khoản của bạn đang đăng nhập ở một thiết bị khác!"
+        );
       });
     } else if (response.data && response.data.status != 1) {
       setTimeout(() => {
