@@ -1,3 +1,4 @@
+const APP_ID = '195238a2-829c-47fc-a581-dfbfea31b822'
 const SCREEN_ROUTER = {
   MAIN: "Main",
   AUTH: "Auth",
@@ -10,4 +11,4 @@ const SCREEN_ROUTER = {
   USER: "User"
 };
 
-export { SCREEN_ROUTER };
+export { SCREEN_ROUTER, APP_ID };

@@ -6,69 +6,42 @@
  * @flow
  */
 
-import DropdownAlertUtil from "@app/components/DropdownAlertUtil";
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import codePush from "react-native-code-push";
-import DropdownAlert from "react-native-dropdownalert";
-import OneSignal from "react-native-onesignal"; // Import package from node modules
-import { Provider } from "react-redux";
-import Reactotron from "reactotron-react-native";
+import { connect, Provider } from "react-redux";
 import AppNavigator from "./app/navigation/AppNavigator";
 import NavigationUtil from "./app/navigation/NavigationUtil";
 import store from "./app/redux/store";
-
 import * as Sentry from '@sentry/react-native';
+import OneSignalHelper from "@app/utils/OneSignalHelper";
+import { APP_ID } from "@app/constants/Constant";
 
-Sentry.init({ 
-  dsn: 'https://c7abe834b0cf45b0b6a61a4e2129c935@o393004.ingest.sentry.io/5537410', 
+
+Sentry.init({
+  dsn: 'https://c7abe834b0cf45b0b6a61a4e2129c935@o393004.ingest.sentry.io/5537410',
 });
 
+const AppContainer = connect(state => ({ state }), {
+  ...require("@app/redux/actions")
+})(props => {
+  useEffect(() => {
+    OneSignalHelper.initialization(APP_ID, props);
+  }, [])
+  return (
+    <AppNavigator
+      ref={navigatorRef =>
+        NavigationUtil.setTopLevelNavigator(navigatorRef)
+      }
+    />
+  )
+})
 
-class App extends Component {
-  constructor(properties) {
-    super(properties);
-    OneSignal.init("6b13a5c4-571f-4244-b5f6-d220309f4f4d"); // ios
-    OneSignal.addEventListener("received", this.onReceived);
-    OneSignal.addEventListener("opened", this.onOpened);
-    OneSignal.addEventListener("ids", this.onIds);
-    // OneSignal.configure()
-  }
-
-  componentWillUnmount() {
-    OneSignal.removeEventListener("received", this.onReceived);
-    OneSignal.removeEventListener("opened", this.onOpened);
-    OneSignal.removeEventListener("ids", this.onIds);
-  }
-
-  onReceived(notification) {
-    Reactotron.log("Notification received: ", notification);
-  }
-
-  onOpened(openResult) {
-    Reactotron.log("Message: ", openResult.notification.payload.body);
-    Reactotron.log("Data: ", openResult.notification.payload.additionalData);
-    Reactotron.log("isActive: ", openResult.notification.isAppInFocus);
-    Reactotron.log("openResult: ", openResult);
-  }
-
-  onIds(device) {
-    Reactotron.log("Device info: ", device);
-  }
-  render() {
-    return (
-      <Provider store={store}>
-        <AppNavigator
-          ref={navigatorRef =>
-            NavigationUtil.setTopLevelNavigator(navigatorRef)
-          }
-        />
-        <DropdownAlert
-          ref={alertRef => DropdownAlertUtil.setTopDropdownAlert(alertRef)}
-          onTap={DropdownAlertUtil.onTap}
-        />
-      </Provider>
-    );
-  }
+const App = (props) => {
+  return (
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  )
 }
 
 let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
