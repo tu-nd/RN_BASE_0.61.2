@@ -1,20 +1,8 @@
 // import { format } from "date-fns";
 import moment from "moment";
 import "moment/locale/vi";
-moment.locale("vi");
-
-// export default {
-// 	formatBirthday: (timestamp, novalue = "") => (timestamp > 0 ? format(timestamp, "DD/MM/YYYY") : novalue),
-// 	formatLongDate: timestamp => format(timestamp, "dddd, DD/MM/YYYY"),
-// 	formatShortDate: timestamp => format(timestamp, "DD/MM/YYYY"),
-// 	formatTime: timestamp => format(timestamp, "HH:mm"),
-// 	formatGroupKey: timestamp => format(timestamp, "YYYYMMDD"),
-// 	formatTimeDate: timestamp => format(timestamp, "HH:mm DD/MM/YYYY"),
-// 	formatDateTime: timestamp => format(timestamp, "DD/MM/YYYY HH:mm"),
-// };
-
 export { moment };
-
+moment.locale("vi");
 export default {
 	formatBirthday: (timestamp, novalue = "") => (timestamp > 0 ? moment(timestamp).utcOffset(7).format("DD/MM/YYYY") : novalue),
 	formatLongDate: timestamp => moment(timestamp).utcOffset(7).format("dddd, DD/MM/YYYY"),

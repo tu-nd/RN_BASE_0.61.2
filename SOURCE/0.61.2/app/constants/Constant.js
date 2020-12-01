@@ -8,7 +8,9 @@ const SCREEN_ROUTER = {
   AUTH_LOADING: "AuthLoading",
   FORGOT_PASS: "ForgotPassword",
   REGISTER: "Register",
-  USER: "User"
+  USER: "User",
+  DETAIL_NOTI: "DetailNoti",
+
 };
 
 export { SCREEN_ROUTER, APP_ID };

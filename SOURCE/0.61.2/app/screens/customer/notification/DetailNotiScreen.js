@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { SafeAreaView } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import NavigationUtil from "@app/navigation/NavigationUtil";
 
 export class DetailNotiScreen extends Component {
   static propTypes = {
@@ -15,7 +17,9 @@ export class DetailNotiScreen extends Component {
         <SafeAreaView
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <Text> DetailNotiScreen </Text>
+          <TouchableOpacity onPress={() => NavigationUtil.goBack()} children={
+            <Text> go back </Text>
+          } />
         </SafeAreaView>
       </View>
     );

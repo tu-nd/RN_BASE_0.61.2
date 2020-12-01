@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import WHeader from "@app/components/WHeader";
 import R from "@app/assets/R";
 import theme, { colors } from "@app/constants/Theme";
+import { TouchableOpacity } from "react-native";
+import NavigationUtil from "@app/navigation/NavigationUtil";
+import { SCREEN_ROUTER } from "@app/constants/Constant";
 export class NotificationScreen extends Component {
   render() {
     return (
@@ -15,7 +18,11 @@ export class NotificationScreen extends Component {
         <SafeAreaView
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
-          <Text> NotificationScreen </Text>
+          <Text children={'NotificationScreen'} />
+          <TouchableOpacity
+            style={{ marginTop: 20 }}
+            onPress={() => NavigationUtil.navigate(SCREEN_ROUTER.DETAIL_NOTI)}
+            children={<Text children={'go to NotificationDetailScreen'} />} />
         </SafeAreaView>
       </View>
     );

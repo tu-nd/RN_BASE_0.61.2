@@ -15,6 +15,7 @@ import FastImage from "react-native-fast-image";
 import LoginScreen from "@app/screens/auth/LoginScreen";
 import { RegisterScreen } from "@app/screens/auth/RegisterScreen";
 import { ForgotPasswordScreen } from "@app/screens/auth/ForgotPasswordScreen";
+import StackNavi from "./StackNavi";
 
 const tabbarIcons = {
   [SCREEN_ROUTER.HOME]: R.images.ic_home,
@@ -107,7 +108,9 @@ const AuthStack = createStackNavigator(
 export default createStackNavigator(
   {
     [SCREEN_ROUTER.MAIN]: Main,
-    AuthStack
+    AuthStack,
+    ...StackNavi
+
   },
   {
     defaultNavigationOptions: {
